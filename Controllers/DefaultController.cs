@@ -4,31 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls.WebParts;
+using OtelMVCProje.Models.Entity;
 
 namespace OtelMVCProje.Controllers
 {
     public class DefaultController : Controller
     {
         // GET: Default
-        public ActionResult Index()
-        {
-            return View();
-        }
 
-        public ActionResult Anasayfa()
-        {
-            return View();
-        }
-        public ActionResult Hakkimda()
-        {
-            return View();
+        private DbOtelDevExEntities db = new DbOtelDevExEntities();
+       public ActionResult Hakkimda()
+       {
+           var veriler = db.TblHakkimda.ToList();
+            return View(veriler);
         }
        
 
-        public ActionResult İletisim()
-        {
-            return View();
-        }
 
         public PartialViewResult PartialFooter()
         {

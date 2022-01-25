@@ -42,10 +42,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -119,9 +127,43 @@
     <Compile Include="Controllers\iletisimController.cs" />
     <Compile Include="Controllers\KayitController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MisafirController.cs" />
     <Compile Include="Controllers\RezervasyonController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\TblHakkimda.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\TblIletisim.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\TblMesaj.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\TblMisafir.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\TblRezervasyon.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\TblWebKayit.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -134,8 +176,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Entity\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Entity\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Entity\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Entity\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -192,6 +251,45 @@
     <Content Include="tema\main\index.html" />
     <Content Include="tema\main\services.html" />
     <Content Include="tema\main\starter-license-W3Layouts.txt" />
+    <Content Include="tema\panel\.gitignore" />
+    <Content Include="tema\panel\dist\401.html" />
+    <Content Include="tema\panel\dist\404.html" />
+    <Content Include="tema\panel\dist\500.html" />
+    <Content Include="tema\panel\dist\assets\demo\chart-area-demo.js" />
+    <Content Include="tema\panel\dist\assets\demo\chart-bar-demo.js" />
+    <Content Include="tema\panel\dist\assets\demo\chart-pie-demo.js" />
+    <Content Include="tema\panel\dist\assets\demo\datatables-demo.js" />
+    <Content Include="tema\panel\dist\assets\img\error-404-monochrome.svg" />
+    <Content Include="tema\panel\dist\charts.html" />
+    <Content Include="tema\panel\dist\css\1.png" />
+    <Content Include="tema\panel\dist\css\styles.css" />
+    <Content Include="tema\panel\dist\index.html" />
+    <Content Include="tema\panel\dist\js\scripts.js" />
+    <Content Include="tema\panel\dist\layout-sidenav-light.html" />
+    <Content Include="tema\panel\dist\layout-static.html" />
+    <Content Include="tema\panel\dist\login.html" />
+    <Content Include="tema\panel\dist\password.html" />
+    <Content Include="tema\panel\dist\register.html" />
+    <Content Include="tema\panel\dist\tables.html" />
+    <Content Include="tema\panel\index.html" />
+    <Content Include="tema\panel\scripts\build-assets.js" />
+    <Content Include="tema\panel\scripts\build-pug.js" />
+    <Content Include="tema\panel\scripts\build-scripts.js" />
+    <Content Include="tema\panel\scripts\build-scss.js" />
+    <Content Include="tema\panel\scripts\clean.js" />
+    <Content Include="tema\panel\scripts\render-assets.js" />
+    <Content Include="tema\panel\scripts\render-pug.js" />
+    <Content Include="tema\panel\scripts\render-scripts.js" />
+    <Content Include="tema\panel\scripts\render-scss.js" />
+    <Content Include="tema\panel\scripts\sb-watch.js" />
+    <Content Include="tema\panel\scripts\start-debug.js" />
+    <Content Include="tema\panel\scripts\start.js" />
+    <Content Include="tema\panel\src\assets\demo\chart-area-demo.js" />
+    <Content Include="tema\panel\src\assets\demo\chart-bar-demo.js" />
+    <Content Include="tema\panel\src\assets\demo\chart-pie-demo.js" />
+    <Content Include="tema\panel\src\assets\demo\datatables-demo.js" />
+    <Content Include="tema\panel\src\assets\img\error-404-monochrome.svg" />
+    <Content Include="tema\panel\src\js\scripts.js" />
     <Content Include="tema\Register\css\font-awesome.css" />
     <Content Include="tema\Register\css\style.css" />
     <Content Include="tema\Register\fonts\fontawesome-webfont.svg" />
@@ -226,7 +324,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Shared\_OtelLayout.cshtml" />
     <Content Include="tema\main\assets\fonts\fontawesome-webfont.eot" />
     <Content Include="tema\main\assets\fonts\fontawesome-webfont.ttf" />
@@ -248,10 +345,57 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Kayit\KayitOl.cshtml" />
     <Content Include="Views\Rezervasyon\Index.cshtml" />
+    <Content Include="Views\iletisim\MesajGonder.cshtml" />
+    <Content Include="tema\panel\.browserslistrc" />
+    <Content Include="tema\panel\.travis.yml" />
+    <Content Include="tema\panel\LICENSE" />
+    <Content Include="tema\panel\package-lock.json" />
+    <Content Include="tema\panel\package.json" />
+    <Content Include="tema\panel\README.md" />
+    <Content Include="tema\panel\src\pug\layouts\authentication.pug" />
+    <Content Include="tema\panel\src\pug\layouts\dashboard.pug" />
+    <Content Include="tema\panel\src\pug\layouts\error.pug" />
+    <Content Include="tema\panel\src\pug\layouts\includes\footer.pug" />
+    <Content Include="tema\panel\src\pug\layouts\includes\head\css.pug" />
+    <Content Include="tema\panel\src\pug\layouts\includes\head\icons.pug" />
+    <Content Include="tema\panel\src\pug\layouts\includes\head\meta.pug" />
+    <Content Include="tema\panel\src\pug\layouts\includes\head\title.pug" />
+    <Content Include="tema\panel\src\pug\layouts\includes\navigation\sidenav.pug" />
+    <Content Include="tema\panel\src\pug\layouts\includes\navigation\topnav.pug" />
+    <Content Include="tema\panel\src\pug\layouts\includes\scripts.pug" />
+    <Content Include="tema\panel\src\pug\pages\401.pug" />
+    <Content Include="tema\panel\src\pug\pages\404.pug" />
+    <Content Include="tema\panel\src\pug\pages\500.pug" />
+    <Content Include="tema\panel\src\pug\pages\charts.pug" />
+    <Content Include="tema\panel\src\pug\pages\includes\datatable.pug" />
+    <Content Include="tema\panel\src\pug\pages\includes\page-header.pug" />
+    <Content Include="tema\panel\src\pug\pages\index.pug" />
+    <Content Include="tema\panel\src\pug\pages\layout-sidenav-light.pug" />
+    <Content Include="tema\panel\src\pug\pages\layout-static.pug" />
+    <Content Include="tema\panel\src\pug\pages\login.pug" />
+    <Content Include="tema\panel\src\pug\pages\password.pug" />
+    <Content Include="tema\panel\src\pug\pages\register.pug" />
+    <Content Include="tema\panel\src\pug\pages\tables.pug" />
+    <Content Include="tema\panel\src\scss\layout\_authentication.scss" />
+    <Content Include="tema\panel\src\scss\layout\_dashboard-default.scss" />
+    <Content Include="tema\panel\src\scss\layout\_dashboard-fixed.scss" />
+    <Content Include="tema\panel\src\scss\layout\_error.scss" />
+    <Content Include="tema\panel\src\scss\navigation\sidenav\_sidenav-dark.scss" />
+    <Content Include="tema\panel\src\scss\navigation\sidenav\_sidenav-light.scss" />
+    <Content Include="tema\panel\src\scss\navigation\sidenav\_sidenav.scss" />
+    <Content Include="tema\panel\src\scss\navigation\_nav.scss" />
+    <Content Include="tema\panel\src\scss\navigation\_topnav.scss" />
+    <Content Include="tema\panel\src\scss\styles.scss" />
+    <Content Include="tema\panel\src\scss\variables\_navigation.scss" />
+    <Content Include="tema\panel\src\scss\variables\_spacing.scss" />
+    <Content Include="tema\panel\src\scss\_global.scss" />
+    <Content Include="tema\panel\src\scss\_variables.scss" />
+    <Content Include="Views\Shared\_MisafirLayout.cshtml" />
+    <Content Include="Views\Misafir\Index.cshtml" />
+    <Content Include="Views\Misafir\Rezervasyonlarim.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -265,6 +409,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
