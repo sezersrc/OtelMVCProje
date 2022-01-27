@@ -8,16 +8,16 @@ using OtelMVCProje.Models.Entity;
 
 namespace OtelMVCProje.Controllers
 {
+    [Authorize]
     public class MisafirController : Controller
     {
         // GET: Misafir
 
         private DbOtelDevExEntities db = new DbOtelDevExEntities();
-       
         public ActionResult Index()
         {
             var misafirmail = (string)Session["Mail"];
-            var misafirbilgi = db.TblWebKayit.Where(x => x.Mail == misafirmail).FirstOrDefault(); 
+            var misafirbilgi = db.TblWebKayit.Where(x => x.Mail == misafirmail).FirstOrDefault();
             return View(misafirbilgi);
         }
 

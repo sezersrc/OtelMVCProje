@@ -28,12 +28,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script type="text/javascript" src="../../tema/Rezervasyon/js/move-top.js"></script>
     <script type="text/javascript" src="../../tema/Rezervasyon/js/easing.js"></script>
     <script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-				});
-			});
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
     </script>
 </head>
 <body>
@@ -43,76 +43,77 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     <div class="banner-top">
         <h2>Hemen Rezervasyonunu Yap!</h2>
-        <div class="banner-bottom">
-            <div class="bnr-one">
-                <div class="bnr-left">
-                    <p>Giriş Tarihi</p>
+        <form method="post">
+            <div class="banner-bottom">
+                <div class="bnr-one">
+                    <div class="bnr-left">
+                        <p>Giriş Tarihi</p>
+                    </div>
+                    <div class="bnr-right">
+                        <!--Date Format Düzenlenecek-->
+                        <input class="date" id="datepicker" type="text" name="GirisTarih" value="" onfocus="this.value = '';" onblur="if (this.value == '') { this.value = ''; }" required="">
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="bnr-right">
-                    <input class="date" id="datepicker" type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+                <div class="bnr-one">
+                    <div class="bnr-left">
+                        <p>Çıkış Tarihi</p>
+                    </div>
+                    <div class="bnr-right">
+                        <input class="date" id="datepicker1" type="text" name="CikisTarih" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="bnr-one">
-                <div class="bnr-left">
-                    <p>Çıkış Tarihi</p>
+                <div class="bnr-one">
+                    <div class="bnr-left">
+                        <p>Kişi Sayısı</p>
+                    </div>
+                    <div class="bnr-right">
+                        <select>
+                            <option class="rm" value="saab">1</option>
+                            <option class="rm" value="opel">2</option>
+                            <option class="rm" value="audi">3</option>
+                            <option class="rm" value="audi">4 or 4+</option>
+                        </select>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="bnr-right">
-                    <input class="date" id="datepicker1" type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+                <div class="bnr-one">
+                    <div class="bnr-left">
+                        <p>Ad Soyad</p>
+                    </div>
+                    <div class="bnr-right">
+                        <input type="text" />
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="bnr-one">
-                <div class="bnr-left">
-                    <p>Kişi Sayısı</p>
+                <div class="bnr-one">
+                    <div class="bnr-left">
+                        <p>Ota Türü</p>
+                    </div>
+                    <div class="bnr-right">
+                        <select>
+                            <option value="volvo">Bir tür seçin</option>
+                            <option value="saab">Tek Kişilik</option>
+                            <option value="opel">Çift Kişilik</option>
+                            <option value="audi">Üç Kişilik</option>
+                            <option value="audi">Dört Kişilik</option>
+                        </select>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="bnr-right">
-                    <select>
-                        <option class="rm" value="saab">1</option>
-                        <option class="rm" value="opel">2</option>
-                        <option class="rm" value="audi">3</option>
-                        <option class="rm" value="audi">4 or 4+</option>
-                    </select>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="bnr-one">
-                <div class="bnr-left">
-                    <p>Ad Soyad</p>
-                </div>
-                <div class="bnr-right">
-                    <input type="text" />
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="bnr-one">
-                <div class="bnr-left">
-                    <p>Ota Türü</p>
-                </div>
-                <div class="bnr-right">
-                    <select>
-                        <option value="volvo">Bir tür seçin</option>
-                        <option value="saab">Tek Kişilik</option>
-                        <option value="opel">Çift Kişilik</option>
-                        <option value="audi">Üç Kişilik</option>
-                        <option value="audi">Dört Kişilik</option>
-                    </select>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="bnr-btn">
-                <form>
+                <div class="bnr-btn">
                     <input type="submit" value="Rezervasyon Yap">
-                </form>
+                </div>
             </div>
-        </div>
+        </form>
         <!---start-date-piker---->
         <link rel="stylesheet" href="../../tema/Rezervasyon/css/jquery-ui.css" />
         <script src="../../tema/Rezervasyon/js/jquery-ui.js"></script>
         <script>
-				$(function() {
-				$( "#datepicker,#datepicker1" ).datepicker();
-				});
+            $(function () {
+                $("#datepicker,#datepicker1").datepicker();
+            });
         </script>
         <!---/End-date-piker---->
     </div>
