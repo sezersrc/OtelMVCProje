@@ -65,5 +65,23 @@ namespace OtelMVCProje.Controllers
             var mesaj = db.TblMesajAdmin.Where(x => x.MesajID == id).FirstOrDefault();
             return View(mesaj);
         }
+
+        [HttpGet]
+        public ActionResult YeniMesaj()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult YeniMesaj(TblMesajAdmin p)
+        {
+            var misafirmail = (string)Session["Mail"];
+            p.Gonderen = misafirmail;
+            p.Alici = "Admin";
+            p.Tarih = DateTime.Parse(DateTime.Now.ToShortDateString());
+            db.TblMesajAdmin.Add(p);
+            db.SaveChanges();
+            return RedirectToAction("GidenMesajlar");
+        }
     }
 }
