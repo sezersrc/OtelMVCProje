@@ -11,6 +11,7 @@
 <table class="table table-bordered">
     <tr>
         <th>Misafir Ad Soyad</th>
+        <th>Rezervasyon Ad Soyad</th>
         <th>Giriş Tarihi</th>
         <th>Çıkış Tarihi</th>
         <th>Kişi</th>
@@ -20,8 +21,9 @@
     {
         <tr>
             <td> @x.TblMisafir.AdSoyad</td>
-            <td> @x.GirisTarih </td>
-            <td> @x.CikisTarih </td>
+            <td> @x.RezervasyonAdSoyad</td>
+            <td> @(((DateTime)x.GirisTarih).ToString("dd-MMMMMMM-yyy")) </td>
+            <td>@(((DateTime)x.CikisTarih).ToString("dd-MMMMMMM-yyy")) </td>
             <td> @x.KisiSayisi </td>
             <td> <a href="#" class="btn btn-primary">Detaylar</a> </td>
         </tr>

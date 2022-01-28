@@ -22,6 +22,11 @@ namespace OtelMVCProje.Controllers
         [HttpPost]
         public ActionResult Index(TblRezervasyon p)
         {
+            var misafirmail = (string)Session["Mail"];
+            var misafirid = db.TblWebKayit.Where(x => x.Mail == misafirmail).Select(x=>x.ID).FirstOrDefault();
+
+            p.Durum = 14;
+            p.Misafir = misafirid;
             db.TblRezervasyon.Add(p);
             db.SaveChanges();
             return RedirectToAction("Rezervasyonlarim", "Misafir");
