@@ -1,0 +1,27 @@
+﻿@model OtelMVCProje.Models.Entity.TblMesajAdmin
+
+@{
+    ViewBag.Title = "MesajDetay";
+    Layout = "~/Views/Shared/_MisafirLayout.cshtml";
+}
+<br />
+<h3>Mesaj Detay</h3>
+<!--Tasarım Yapılacak-->
+@Html.HiddenFor(x => x.MesajID, new { @class = "form-control" })
+
+<label > Gönderen ; </label>
+@Html.DisplayFor(x => x.Gonderen, new { @class = "form-control" })
+<br />
+<label> Alıcı ; </label>
+@Html.DisplayFor(x => x.Alici, new { @class = "form-control" })
+<br />
+<label> Konu  ; </label>
+@Html.DisplayFor(x => x.Konu, new { @class = "form-control" })
+<br />
+<label> Tarih  ; </label>
+@Html.DisplayFor(x => x.Tarih, new { @class = "form-control" })
+
+<br />
+<label> Mesaj Detay  ; </label>
+@Html.DisplayFor(x => x.Mesaj, new { @class = "form-control" })
+

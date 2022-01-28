@@ -31,5 +31,6 @@ namespace OtelMVCProje.Models.Entity
         public virtual DbSet<TblWebKayit> TblWebKayit { get; set; }
         public virtual DbSet<TblMisafir> TblMisafir { get; set; }
         public virtual DbSet<TblRezervasyon> TblRezervasyon { get; set; }
+        public virtual DbSet<TblMesajAdmin> TblMesajAdmin { get; set; }
     }
 }

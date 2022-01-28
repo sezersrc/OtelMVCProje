@@ -36,6 +36,17 @@
           <Property Name="Konu" Type="nvarchar" MaxLength="150" />
           <Property Name="Mesaj" Type="nvarchar" MaxLength="1000" />
         </EntityType>
+        <EntityType Name="TblMesajAdmin">
+          <Key>
+            <PropertyRef Name="MesajID" />
+          </Key>
+          <Property Name="MesajID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gonderen" Type="nvarchar" MaxLength="100" />
+          <Property Name="Alici" Type="nvarchar" MaxLength="100" />
+          <Property Name="Konu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mesaj" Type="nvarchar(max)" />
+          <Property Name="Tarih" Type="datetime" />
+        </EntityType>
         <EntityType Name="TblMisafir">
           <Key>
             <PropertyRef Name="MisafirID" />
@@ -95,6 +106,7 @@
           <EntitySet Name="TblHakkimda" EntityType="Self.TblHakkimda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblIletisim" EntityType="Self.TblIletisim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMesaj" EntityType="Self.TblMesaj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblMesajAdmin" EntityType="Self.TblMesajAdmin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMisafir" EntityType="Self.TblMisafir" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblRezervasyon" EntityType="Self.TblRezervasyon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblWebKayit" EntityType="Self.TblWebKayit" Schema="dbo" store:Type="Tables" />
@@ -128,6 +140,7 @@
             <End Role="TblMisafir" EntitySet="TblMisafir" />
             <End Role="TblRezervasyon" EntitySet="TblRezervasyon" />
           </AssociationSet>
+          <EntitySet Name="TblMesajAdmin" EntityType="DbOtelDevExModel.TblMesajAdmin" />
         </EntityContainer>
         <EntityType Name="TblIletisim">
           <Key>
@@ -207,6 +220,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TblMesajAdmin">
+          <Key>
+            <PropertyRef Name="MesajID" />
+          </Key>
+          <Property Name="MesajID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gonderen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Alici" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Konu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mesaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -290,6 +314,18 @@
                 <ScalarProperty Name="GirisTarih" ColumnName="GirisTarih" />
                 <ScalarProperty Name="Misafir" ColumnName="Misafir" />
                 <ScalarProperty Name="RezervasyonID" ColumnName="RezervasyonID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblMesajAdmin">
+            <EntityTypeMapping TypeName="DbOtelDevExModel.TblMesajAdmin">
+              <MappingFragment StoreEntitySet="TblMesajAdmin">
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+                <ScalarProperty Name="Konu" ColumnName="Konu" />
+                <ScalarProperty Name="Alici" ColumnName="Alici" />
+                <ScalarProperty Name="Gonderen" ColumnName="Gonderen" />
+                <ScalarProperty Name="MesajID" ColumnName="MesajID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

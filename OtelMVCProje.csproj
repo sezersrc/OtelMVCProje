@@ -156,6 +156,9 @@
     <Compile Include="Models\Entity\TblMesaj.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\TblMesajAdmin.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entity\TblMisafir.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -393,6 +396,9 @@
     <Content Include="Views\Shared\_MisafirLayout.cshtml" />
     <Content Include="Views\Misafir\Index.cshtml" />
     <Content Include="Views\Misafir\Rezervasyonlarim.cshtml" />
+    <Content Include="Views\Misafir\GelenMesajlar.cshtml" />
+    <Content Include="Views\Misafir\GidenMesajlar.cshtml" />
+    <Content Include="Views\Misafir\MesajDetay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
