@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DbOtelDevExModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TblEkibimiz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Unvan" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gorsel" Type="nvarchar" MaxLength="250" />
+          <Property Name="iletisim1" Type="nvarchar" MaxLength="250" />
+          <Property Name="iletisim2" Type="nvarchar" MaxLength="250" />
+        </EntityType>
         <EntityType Name="TblHakkimda">
           <Key>
             <PropertyRef Name="ID" />
@@ -127,6 +138,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DbOtelDevExModelStoreContainer">
+          <EntitySet Name="TblEkibimiz" EntityType="Self.TblEkibimiz" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblHakkimda" EntityType="Self.TblHakkimda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblIletisim" EntityType="Self.TblIletisim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMesaj" EntityType="Self.TblMesaj" Schema="dbo" store:Type="Tables" />
@@ -175,6 +187,7 @@
             <End Role="TblOda" EntitySet="TblOda" />
             <End Role="TblRezervasyon" EntitySet="TblRezervasyon" />
           </AssociationSet>
+          <EntitySet Name="TblEkibimiz" EntityType="DbOtelDevExModel.TblEkibimiz" />
         </EntityContainer>
         <EntityType Name="TblIletisim">
           <Key>
@@ -291,6 +304,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TblEkibimiz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Unvan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gorsel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="iletisim1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="iletisim2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -399,6 +423,18 @@
                 <ScalarProperty Name="Kat" ColumnName="Kat" />
                 <ScalarProperty Name="OdaNo" ColumnName="OdaNo" />
                 <ScalarProperty Name="OdaID" ColumnName="OdaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblEkibimiz">
+            <EntityTypeMapping TypeName="DbOtelDevExModel.TblEkibimiz">
+              <MappingFragment StoreEntitySet="TblEkibimiz">
+                <ScalarProperty Name="iletisim2" ColumnName="iletisim2" />
+                <ScalarProperty Name="iletisim1" ColumnName="iletisim1" />
+                <ScalarProperty Name="Gorsel" ColumnName="Gorsel" />
+                <ScalarProperty Name="Unvan" ColumnName="Unvan" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
