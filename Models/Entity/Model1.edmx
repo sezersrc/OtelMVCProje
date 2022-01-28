@@ -65,6 +65,18 @@
           <Property Name="Sehir" Type="int" />
           <Property Name="ilce" Type="int" />
         </EntityType>
+        <EntityType Name="TblOda">
+          <Key>
+            <PropertyRef Name="OdaID" />
+          </Key>
+          <Property Name="OdaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OdaNo" Type="char" MaxLength="3" />
+          <Property Name="Kat" Type="varchar" MaxLength="2" />
+          <Property Name="Kapasite" Type="char" MaxLength="1" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="200" />
+          <Property Name="Telefon" Type="char" MaxLength="4" />
+          <Property Name="Durum" Type="int" />
+        </EntityType>
         <EntityType Name="TblRezervasyon">
           <Key>
             <PropertyRef Name="RezervasyonID" />
@@ -102,16 +114,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblRezervasyon_TblOda">
+          <End Role="TblOda" Type="Self.TblOda" Multiplicity="0..1" />
+          <End Role="TblRezervasyon" Type="Self.TblRezervasyon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblOda">
+              <PropertyRef Name="OdaID" />
+            </Principal>
+            <Dependent Role="TblRezervasyon">
+              <PropertyRef Name="Oda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DbOtelDevExModelStoreContainer">
           <EntitySet Name="TblHakkimda" EntityType="Self.TblHakkimda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblIletisim" EntityType="Self.TblIletisim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMesaj" EntityType="Self.TblMesaj" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMesajAdmin" EntityType="Self.TblMesajAdmin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMisafir" EntityType="Self.TblMisafir" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblOda" EntityType="Self.TblOda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblRezervasyon" EntityType="Self.TblRezervasyon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblWebKayit" EntityType="Self.TblWebKayit" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_TblRezervasyon_TblMisafir" Association="Self.FK_TblRezervasyon_TblMisafir">
             <End Role="TblMisafir" EntitySet="TblMisafir" />
+            <End Role="TblRezervasyon" EntitySet="TblRezervasyon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblRezervasyon_TblOda" Association="Self.FK_TblRezervasyon_TblOda">
+            <End Role="TblOda" EntitySet="TblOda" />
             <End Role="TblRezervasyon" EntitySet="TblRezervasyon" />
           </AssociationSet>
         </EntityContainer>
@@ -141,6 +170,11 @@
             <End Role="TblRezervasyon" EntitySet="TblRezervasyon" />
           </AssociationSet>
           <EntitySet Name="TblMesajAdmin" EntityType="DbOtelDevExModel.TblMesajAdmin" />
+          <EntitySet Name="TblOda" EntityType="DbOtelDevExModel.TblOda" />
+          <AssociationSet Name="FK_TblRezervasyon_TblOda" Association="DbOtelDevExModel.FK_TblRezervasyon_TblOda">
+            <End Role="TblOda" EntitySet="TblOda" />
+            <End Role="TblRezervasyon" EntitySet="TblRezervasyon" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="TblIletisim">
           <Key>
@@ -207,6 +241,7 @@
           <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Durum" Type="Int32" />
           <NavigationProperty Name="TblMisafir" Relationship="DbOtelDevExModel.FK_TblRezervasyon_TblMisafir" FromRole="TblRezervasyon" ToRole="TblMisafir" />
+          <NavigationProperty Name="TblOda" Relationship="DbOtelDevExModel.FK_TblRezervasyon_TblOda" FromRole="TblRezervasyon" ToRole="TblOda" />
         </EntityType>
         <Association Name="FK_TblRezervasyon_TblMisafir">
           <End Type="DbOtelDevExModel.TblMisafir" Role="TblMisafir" Multiplicity="0..1" />
@@ -231,6 +266,31 @@
           <Property Name="Mesaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Tarih" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="TblOda">
+          <Key>
+            <PropertyRef Name="OdaID" />
+          </Key>
+          <Property Name="OdaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OdaNo" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Kat" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Kapasite" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Durum" Type="Int32" />
+          <NavigationProperty Name="TblRezervasyon" Relationship="DbOtelDevExModel.FK_TblRezervasyon_TblOda" FromRole="TblOda" ToRole="TblRezervasyon" />
+        </EntityType>
+        <Association Name="FK_TblRezervasyon_TblOda">
+          <End Type="DbOtelDevExModel.TblOda" Role="TblOda" Multiplicity="0..1" />
+          <End Type="DbOtelDevExModel.TblRezervasyon" Role="TblRezervasyon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblOda">
+              <PropertyRef Name="OdaID" />
+            </Principal>
+            <Dependent Role="TblRezervasyon">
+              <PropertyRef Name="Oda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -326,6 +386,19 @@
                 <ScalarProperty Name="Alici" ColumnName="Alici" />
                 <ScalarProperty Name="Gonderen" ColumnName="Gonderen" />
                 <ScalarProperty Name="MesajID" ColumnName="MesajID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblOda">
+            <EntityTypeMapping TypeName="DbOtelDevExModel.TblOda">
+              <MappingFragment StoreEntitySet="TblOda">
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Kapasite" ColumnName="Kapasite" />
+                <ScalarProperty Name="Kat" ColumnName="Kat" />
+                <ScalarProperty Name="OdaNo" ColumnName="OdaNo" />
+                <ScalarProperty Name="OdaID" ColumnName="OdaID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
