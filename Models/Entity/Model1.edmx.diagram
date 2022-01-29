@@ -10,12 +10,13 @@
         <EntityTypeShape EntityType="DbOtelDevExModel.TblMesaj" Width="1.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="DbOtelDevExModel.TblWebKayit" Width="1.5" PointX="3.375" PointY="3.75" />
         <EntityTypeShape EntityType="DbOtelDevExModel.TblMisafir" Width="1.5" PointX="5.375" PointY="1" />
-        <EntityTypeShape EntityType="DbOtelDevExModel.TblRezervasyon" Width="1.5" PointX="7.625" PointY="1.25" />
-        <AssociationConnector Association="DbOtelDevExModel.FK_TblRezervasyon_TblMisafir" />
         <EntityTypeShape EntityType="DbOtelDevExModel.TblMesajAdmin" Width="1.5" PointX="5.375" PointY="5.75" />
         <EntityTypeShape EntityType="DbOtelDevExModel.TblOda" Width="1.5" PointX="0.75" PointY="7" />
-        <AssociationConnector Association="DbOtelDevExModel.FK_TblRezervasyon_TblOda" />
         <EntityTypeShape EntityType="DbOtelDevExModel.TblEkibimiz" Width="1.5" PointX="7.375" PointY="5.75" />
+        <EntityTypeShape EntityType="DbOtelDevExModel.TblOnRezervasyon" Width="1.5" PointX="3.375" PointY="8.75" />
+        <EntityTypeShape EntityType="DbOtelDevExModel.TblRezervasyon" Width="1.5" PointX="9.125" PointY="0.75" />
+        <AssociationConnector Association="DbOtelDevExModel.FK_TblRezervasyon_TblMisafir" />
+        <AssociationConnector Association="DbOtelDevExModel.FK_TblRezervasyon_TblOda" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

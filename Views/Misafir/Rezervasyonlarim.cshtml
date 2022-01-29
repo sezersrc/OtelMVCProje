@@ -1,5 +1,5 @@
 ﻿@using OtelMVCProje.Models.Entity
-@model List<TblRezervasyon>
+@model List<TblOnRezervasyon>
 @{
     ViewBag.Title = "Rezervasyonlarim";
     Layout = "~/Views/Shared/_MisafirLayout.cshtml";
@@ -10,8 +10,7 @@
 
 <table class="table table-bordered">
     <tr>
-        <th>Misafir Ad Soyad</th>
-        <th>Rezervasyon Ad Soyad</th>
+        <th>Ad Soyad</th>
         <th>Giriş Tarihi</th>
         <th>Çıkış Tarihi</th>
         <th>Kişi</th>
@@ -20,11 +19,10 @@
     @foreach (var x in Model)
     {
         <tr>
-            <td> @x.TblMisafir.AdSoyad</td>
-            <td> @x.RezervasyonAdSoyad</td>
+            <td> @x.AdSoyad</td>
             <td> @(((DateTime)x.GirisTarih).ToString("dd-MMMMMMM-yyy")) </td>
             <td>@(((DateTime)x.CikisTarih).ToString("dd-MMMMMMM-yyy")) </td>
-            <td> @x.KisiSayisi </td>
+            <td> @x.Kisi </td>
             <td> <a href="#" class="btn btn-primary">Detaylar</a> </td>
         </tr>
     }
