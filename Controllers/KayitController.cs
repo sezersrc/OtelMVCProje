@@ -17,9 +17,12 @@ namespace OtelMVCProje.Controllers
         {
             return View();
         }
+
+        
         [HttpPost]
         public ActionResult KayitOl(TblWebKayit p)
         {
+
             db.TblWebKayit.Add(p);
             db.SaveChanges();
             return RedirectToAction("Index","Login");

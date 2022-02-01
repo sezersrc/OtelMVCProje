@@ -129,6 +129,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MisafirController.cs" />
     <Compile Include="Controllers\RezervasyonController.cs" />
+    <Compile Include="Controllers\Sifrele.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

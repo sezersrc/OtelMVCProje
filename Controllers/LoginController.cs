@@ -21,7 +21,8 @@ namespace OtelMVCProje.Controllers
         [HttpPost]
         public ActionResult Index(TblWebKayit p)
         {
-            var bilgiler = db.TblWebKayit.FirstOrDefault(x => x.Mail == p.Mail && x.Sifre == p.Sifre);
+            string sifre1 = Sifrele.MD5Olustur(p.Sifre);
+            var bilgiler = db.TblWebKayit.FirstOrDefault(x => x.Mail == p.Mail && x.Sifre == sifre1);
             if (bilgiler != null)
             {
                 FormsAuthentication.SetAuthCookie(bilgiler.Mail,false);
