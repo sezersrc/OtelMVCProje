@@ -25,7 +25,7 @@ namespace OtelMVCProje.Controllers
         [HttpPost]
         public ActionResult KayitOl(TblWebKayit p)
         {
-            
+           // Şifreleme bölümü gelecek    
             db.TblWebKayit.Add(p);
             db.SaveChanges();
             return RedirectToAction("Index","Login");
