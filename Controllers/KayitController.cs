@@ -17,12 +17,15 @@ namespace OtelMVCProje.Controllers
         {
             return View();
         }
+        public ActionResult Index()
+        {
+            return Content(Sifrele.MD5Olustur("123"));
+        }
 
-        
         [HttpPost]
         public ActionResult KayitOl(TblWebKayit p)
         {
-
+            
             db.TblWebKayit.Add(p);
             db.SaveChanges();
             return RedirectToAction("Index","Login");
